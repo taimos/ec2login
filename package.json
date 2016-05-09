@@ -1,5 +1,5 @@
 {
-  "name": "awslogin",
+  "name": "ec2login",
   "version": "1.0.0",
   "private": true,
   "description": "SSH login helper for EC2 instances",
@@ -8,11 +8,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "awslogin": "index.js"
+    "ec2login": "index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/taimos/awslogin.git"
+    "url": "git+ssh://git@github.com/taimos/ec2login.git"
   },
   "keywords": [
     "AWS",
@@ -21,7 +21,7 @@
   ],
   "author": "Taimos GmbH",
   "license": "MIT",
-  "homepage": "https://bitbucket.org/taimos/awslogin#readme",
+  "homepage": "https://github.com/taimos/ec2login#readme",
   "dependencies": {
     "aws-sdk": "^2.3.8",
     "kexec": "^2.0.2",
