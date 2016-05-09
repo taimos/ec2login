@@ -21,6 +21,13 @@ If you do not want to use the root user you can provide any other user as the fi
 
 e.g. `ec2login ec2-user`
 
+## SSH Connection
+
+The SSH connection is opened with StrictHostKeyChecking disabled because of the dynamic nature of the 
+public IP addresses of EC2 instances.
+
+Agent Forwarding is enabled to allow for jumping to other hosts in AWS.
+
 ## Contribute
 
 Feel free to open issues, provide code improvements or updates to the documentation.
