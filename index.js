@@ -44,7 +44,7 @@ ec2.describeInstances(params, function(err, data) {
             var i = new Instance(instance);
             var label = i.id + ' - ' + i.name;
             if (i.stack) {
-                label += ' - ' + i.stack;
+                label += ' - Stack: ' + i.stack;
             }
             menu.addItem(
                 label,
