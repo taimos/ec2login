@@ -59,5 +59,8 @@ ec2.describeInstances(params, function(err, data) {
     menu.customHeader(function() {
         })
         .disableDefaultHeader()
+        .customPrompt(function() {
+                process.stdout.write("\nPlease select instance by number:\n");
+        })
         .addDelimiter('*', 60).start();
 });

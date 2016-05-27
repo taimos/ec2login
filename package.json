@@ -24,6 +24,6 @@
   "dependencies": {
     "aws-sdk": "^2.3.8",
     "kexec": "^2.0.2",
-    "node-menu": "0.0.9"
+    "node-menu": "1.0.0"
   }
 }
