@@ -1,6 +1,6 @@
 {
   "name": "ec2login",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "SSH login helper for EC2 instances",
   "main": "index.js",
   "scripts": {
