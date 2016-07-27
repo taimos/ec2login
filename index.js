@@ -2,9 +2,31 @@
 
 "use strict";
 
+var argv = require('minimist')(process.argv.slice(2));
+var loginUser = argv._[0] || 'root';
+var awsRegion = argv.region || process.env.AWS_DEFAULT_REGION;
+
 var menu = require('node-menu');
 var AWS = require('aws-sdk');
-var ec2 = new AWS.EC2({region: process.env.AWS_DEFAULT_REGION});
+if (process.env.HTTPS_PROXY || process.env.https_proxy) {
+    try {
+        var agent = require('proxy-agent');
+        AWS.config.update({
+            httpOptions: {
+                agent: agent(process.env.HTTPS_PROXY || process.env.https_proxy)
+            }
+        });
+    } catch (e) {
+        if (e.code === 'MODULE_NOT_FOUND') {
+            console.error('Install proxy-agent for proxy support.');
+        }
+        else {
+            throw e;
+        }
+    }
+}
+
+var ec2 = new AWS.EC2({region: awsRegion});
 var kexec = require('kexec');
 
 var Instance = function(instance) {
@@ -49,9 +71,8 @@ ec2.describeInstances(params, function(err, data) {
             menu.addItem(
                 label,
                 function() {
-                    var username = process.argv[2] || 'root';
-                    console.log('Connecting to ' + this.publicIP + ' with user ' + username);
-                    kexec('ssh', [username + '@' + this.publicIP, '-A', '-o', 'UserKnownHostsFile=/dev/null', '-o', 'StrictHostKeyChecking=no']);
+                    console.log('Connecting to ' + this.publicIP + ' with user ' + loginUser);
+                    kexec('ssh', [loginUser + '@' + this.publicIP, '-A', '-o', 'UserKnownHostsFile=/dev/null', '-o', 'StrictHostKeyChecking=no']);
                 }, i);
         });
     });
