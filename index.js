@@ -32,7 +32,7 @@ var kexec = require('kexec');
 var Instance = function(instance) {
     var self = this;
     self.id = instance.InstanceId;
-    self.publicIP = instance.PublicIpAddress;
+    self.ip = instance.PublicIpAddress || instance.PrivateIpAddress;
     instance.Tags.forEach(function(tag) {
         if (tag.Key === 'Name') {
             self.name = tag.Value;
@@ -71,8 +71,8 @@ ec2.describeInstances(params, function(err, data) {
             menu.addItem(
                 label,
                 function() {
-                    console.log('Connecting to ' + this.publicIP + ' with user ' + loginUser);
-                    kexec('ssh', [loginUser + '@' + this.publicIP, '-A', '-o', 'UserKnownHostsFile=/dev/null', '-o', 'StrictHostKeyChecking=no']);
+                    console.log('Connecting to ' + this.ip + ' with user ' + loginUser);
+                    kexec('ssh', [loginUser + '@' + this.ip, '-A', '-o', 'UserKnownHostsFile=/dev/null', '-o', 'StrictHostKeyChecking=no']);
                 }, i);
         });
     });

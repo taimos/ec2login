@@ -1,3 +1,6 @@
+# Version 1.3.0
+* use private IP if instance has no public one
+
 # Version 1.2.0
 * add proxy support
 * add support for --region cli option
