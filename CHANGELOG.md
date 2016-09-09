@@ -1,3 +1,7 @@
+# Version 1.4.0
+* Use latest AWS SDK
+* Update node-menu for Node 6 compatibility
+
 # Version 1.3.0
 * use private IP if instance has no public one
 

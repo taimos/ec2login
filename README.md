@@ -6,6 +6,8 @@ It then launches an SSH session to the desired instance. If no user is provided 
 
 The region to use is determined by the environment variable `AWS_DEFAULT_REGION`.
 
+If the instance does not have a public IP address the private one is used to connect.
+
 ## Installation
 
 To install ec2login open a terminal and issue: `npm install -g ec2login`
@@ -13,11 +15,10 @@ To install ec2login open a terminal and issue: `npm install -g ec2login`
 ## Usage
 
 To connect to an EC2 instance type `ec2login` in a shell and select the instance in the menu. 
-You have to provide the desired AWS region using the `AWS_DEFAULT_REGION` environment variable.
+You have to provide the desired AWS region using the `AWS_DEFAULT_REGION` environment variable 
+or using the `--region <region>` cli option.
 
-As a one-liner you can prepend the variable to the command `AWS_DEFAULT_REGION=eu-west-1 ec2login`.
-
-If you do not want to use the root user you can provide any other user as the first argument to the script:
+If you do not want to use the `root` user you can provide any other user as the first argument to the script:
 
 e.g. `ec2login ec2-user`
 
