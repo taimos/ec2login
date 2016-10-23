@@ -18,6 +18,9 @@ To connect to an EC2 instance type `ec2login` in a shell and select the instance
 You have to provide the desired AWS region using the `AWS_DEFAULT_REGION` environment variable 
 or using the `--region <region>` cli option.
 
+By specifying the option `--private` you can connect to the private IP of the instance instead of the public one. 
+This is useful if you have a VPN connection to your VPC running the instance. 
+
 If you do not want to use the `root` user you can provide any other user as the first argument to the script:
 
 e.g. `ec2login ec2-user`

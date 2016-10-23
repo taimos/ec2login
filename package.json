@@ -1,6 +1,6 @@
 {
   "name": "ec2login",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "SSH login helper for EC2 instances",
   "main": "index.js",
   "scripts": {
@@ -22,8 +22,8 @@
   "license": "MIT",
   "homepage": "https://github.com/taimos/ec2login#readme",
   "dependencies": {
-    "aws-sdk": "^2.6.0",
-    "kexec": "^2.0.2",
+    "aws-sdk": "^2.6.11",
+    "kexec": "^3.0.0",
     "minimist": "^1.2.0",
     "node-menu": "1.0.1"
   }

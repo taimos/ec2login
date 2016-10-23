@@ -1,3 +1,7 @@
+# Version 1.5.0
+* Use latest AWS SDK
+* add --private option to connect using the private IP
+
 # Version 1.4.0
 * Use latest AWS SDK
 * Update node-menu for Node 6 compatibility

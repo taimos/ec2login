@@ -5,6 +5,7 @@
 var argv = require('minimist')(process.argv.slice(2));
 var loginUser = argv._[0] || 'root';
 var awsRegion = argv.region || process.env.AWS_DEFAULT_REGION;
+var usePrivate = argv.private;
 
 var menu = require('node-menu');
 var AWS = require('aws-sdk');
@@ -32,7 +33,11 @@ var kexec = require('kexec');
 var Instance = function(instance) {
     var self = this;
     self.id = instance.InstanceId;
-    self.ip = instance.PublicIpAddress || instance.PrivateIpAddress;
+    if (usePrivate === true) {
+        self.ip = instance.PrivateIpAddress;
+    } else {
+        self.ip = instance.PublicIpAddress || instance.PrivateIpAddress;
+    }
     instance.Tags.forEach(function(tag) {
         if (tag.Key === 'Name') {
             self.name = tag.Value;
